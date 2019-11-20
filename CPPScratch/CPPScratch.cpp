@@ -3,6 +3,10 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <ctime>
+#include <stdio.h>
+#include <cmath>
+
 using namespace std;
 
 struct movies_t {
@@ -12,9 +16,19 @@ struct movies_t {
 
 void printmovie(movies_t movie);
 void dosomething();
+void pythagoreantrip();
 
 int main()
 {
+	clock_t begin = clock();
+	pythagoreantrip();
+
+
+	clock_t end = clock();
+	double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+	printf("####Completion Time: %d \n", elapsed_secs);
+
+	return 0;
 	vector<int> mahList = {  };
 	/*for (auto blah : mahList) 
 	{
@@ -32,7 +46,31 @@ int main()
 	cout << "The result is sum: " << sum2 << endl;
 	cout << "The answer is: " << (sum2 - sum1) << endl;
 }
+void pythagoreantrip() {
 
+	for (int i = 0; i < 1000; i++)
+	{
+		for (int j = i + 1; j < 1000; j++)
+		{
+			for (int k = j + 1; k < 1000; k++)
+			{
+				
+				if ((i + j + k) == 1000) {
+					//.cout << "The Answer is: " << 
+						cout << "###SUM: " << i << " " << j << " " << k << endl;
+						//if (floor(pow(i, 2) + pow(j, 2)) == floor(pow(k, 2))) {
+						if ((pow(i, 2) + pow(j, 2)) == pow(k, 2)) {
+							cout << "#########ANSWER: " << i << " " << j << " " << k << endl;
+							cout << (i * j * k) << endl;
+							return;
+						}
+				}
+			}
+
+		}
+
+	}
+}
 void printmovie(movies_t movie)
 {
 	movie.year = 1989;
