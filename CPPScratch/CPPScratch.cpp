@@ -17,15 +17,20 @@ struct movies_t {
 void printmovie(movies_t movie);
 void dosomething();
 void pythagoreantrip();
+void summationofprimes();
+bool isprime(long number);
 
 int main()
 {
 	clock_t begin = clock();
-	pythagoreantrip();
-
+	summationofprimes();
+	/*cout << isprime(2) << endl;
+	cout << isprime(3) << endl;
+	cout << isprime(13) << endl;
+	cout << isprime(6) << endl;*/
 
 	clock_t end = clock();
-	double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+	double elapsed_secs = (double(end - begin) / CLOCKS_PER_SEC);
 	printf("####Completion Time: %d \n", elapsed_secs);
 
 	return 0;
@@ -34,7 +39,7 @@ int main()
 	{
 		cout << blah << "\n";
 	}*/
-	long sum1 = 0L, sum2 = 0L;
+	/*long sum1 = 0L, sum2 = 0L;
 	for (int i = 1; i < 101; i++) 
 	{
 		sum1 += i * i;
@@ -44,7 +49,7 @@ int main()
 
 	cout << "The result is sum: " << sum1 << endl;
 	cout << "The result is sum: " << sum2 << endl;
-	cout << "The answer is: " << (sum2 - sum1) << endl;
+	cout << "The answer is: " << (sum2 - sum1) << endl;*/
 }
 void pythagoreantrip() {
 
@@ -96,4 +101,41 @@ void dosomething()
 	cout << "And yours is:\n ";
 	printmovie(yours);
 	//return 0;
+}
+void summationofprimes() 
+{
+	long target = 2000000L;
+	long long sum = 2L;
+	for (long i = 3; i < target; i++)
+	{
+		if (isprime(i) == true) {
+			cout << "Prime: " << i << "  Sum: " << sum << endl;
+			sum += i;
+		}
+		
+	}
+	cout << "####FINAL SUM: " << sum;
+
+}
+/*
+bool isprime(long number)
+{
+	for (long i = 2; i < number; i++) {
+		if (number % i == 0) {
+			return false;
+		}
+	}
+	return true;
+}*/
+
+bool isprime(long num) {
+	bool flag = true;
+	long tgt = num / 2L + 1;
+	for (long i = 2; i < tgt; i++) {
+		if (num % i == 0) {
+			flag = false;
+			break;
+		}
+	}
+	return flag;
 }
