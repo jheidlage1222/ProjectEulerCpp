@@ -19,26 +19,30 @@ void dosomething();
 void pythagoreantrip();
 void summationofprimes();
 bool isprime(long number);
+long nthprime(long n);
 
 int main()
 {
-	clock_t begin = clock();
-	summationofprimes();
+	long begin = clock();
+	long target = 10001L;
+	//summationofprimes();
+	cout << "####" << target << "th PRIME IS: " << nthprime(target);
 	/*cout << isprime(2) << endl;
 	cout << isprime(3) << endl;
 	cout << isprime(13) << endl;
 	cout << isprime(6) << endl;*/
 
-	clock_t end = clock();
+	long end = clock();
 	double elapsed_secs = (double(end - begin) / CLOCKS_PER_SEC);
-	printf("####Completion Time: %d \n", elapsed_secs);
+	//printf("####Completion Time: %d \n", elapsed_secs);
+	cout << "###Elapsed Time: " << elapsed_secs << endl;
 
 	return 0;
-	vector<int> mahList = {  };
-	/*for (auto blah : mahList) 
+	vector<long> mahList = { 0, 1, 2, 3, 4, 5 };
+	for (auto blah : mahList) 
 	{
-		cout << blah << "\n";
-	}*/
+		cout << isprime(blah)  << "\n";
+	}
 	/*long sum1 = 0L, sum2 = 0L;
 	for (int i = 1; i < 101; i++) 
 	{
@@ -117,20 +121,28 @@ void summationofprimes()
 	cout << "####FINAL SUM: " << sum;
 
 }
-/*
-bool isprime(long number)
+
+long nthprime(long n)
 {
-	for (long i = 2; i < number; i++) {
-		if (number % i == 0) {
-			return false;
+	long primeCount = 0;
+	long maxPrime = 0;
+	for (long i = 1; primeCount <= n; i++) {
+		if (isprime(i)) {
+			cout << "Prime #: " << primeCount << endl;
+			primeCount++;
+			maxPrime = i;
 		}
 	}
-	return true;
-}*/
+	return maxPrime;
+
+}
 
 bool isprime(long num) {
 	bool flag = true;
 	long tgt = num / 2L + 1;
+	if (num <= 3) {
+		return true;
+	}
 	for (long i = 2; i < tgt; i++) {
 		if (num % i == 0) {
 			flag = false;
